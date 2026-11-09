@@ -1,0 +1,365 @@
+/* Legend Barber — Dark Barbershop Poster
+   Tokens: coal #0D0B09, surface #171310, bone #F2EDE4, muted #8A8378,
+   ONE accent: signal amber #FFB000. Type: Anton display, Archivo body,
+   JetBrains Mono labels. Square corners, hairline borders, no gradients. */
+/* Self-hosted fonts (Google Fonts, OFL — latin subsets, downloaded 2026-11-09) */
+@font-face{font-family:"Anton"; font-style:normal; font-weight:400; font-display:swap; src:url(../fonts/anton-400.woff2) format("woff2")}
+@font-face{font-family:"Archivo"; font-style:normal; font-weight:400 700; font-display:swap; src:url(../fonts/archivo-400.woff2) format("woff2")}
+@font-face{font-family:"JetBrains Mono"; font-style:normal; font-weight:400 600; font-display:swap; src:url(../fonts/jetbrainsmono-400.woff2) format("woff2")}
+:root{
+  --coal:#0D0B09; --surface:#171310; --surface-2:#1E1917; --panel:#201812;
+  --bone:#F2EDE4; --muted:#8A8378; --amber:#FFB000; --amber-ink:#0D0B09;
+  --linea:rgba(242,237,228,.14); --linea-fuerte:rgba(242,237,228,.28);
+  --wa-verde:#25D366; --wa-fondo:#0B141A; --wa-burbuja:#005C4B; --wa-yo:#FFB000;
+  --fuente-display:"Anton","Arial Narrow","Impact",sans-serif;
+  --fuente-cuerpo:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fuente-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --ancho:1180px; --margen:clamp(16px,4vw,48px);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--coal); color:var(--bone); font-family:var(--fuente-cuerpo);
+  font-size:17px; line-height:1.6; margin:0; -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--amber); color:var(--amber-ink)}
+img{max-width:100%; height:auto; display:block}
+a{color:var(--bone)}
+a:hover{color:var(--amber)}
+:focus-visible{outline:3px solid var(--amber); outline-offset:2px}
+h1,h2,h3{font-family:var(--fuente-display); font-weight:400; text-transform:uppercase;
+  line-height:.95; letter-spacing:-.02em; margin:0 0 .5em}
+h1{font-size:clamp(48px,9vw,120px); overflow-wrap:break-word}
+.heroe h1{font-size:clamp(64px,13vw,180px)}
+h2{font-size:clamp(40px,6vw,72px)}
+h3{font-size:clamp(24px,3vw,34px); letter-spacing:0}
+p{margin:0 0 1em}
+address{font-style:normal}
+.ambar{color:var(--amber)}
+.oculto{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.salto{position:absolute; left:16px; top:-120px; background:var(--amber); color:var(--amber-ink); padding:12px 20px; z-index:200; font-weight:700; transition:top .2s var(--ease)}
+.salto:focus{left:16px; top:8px}
+
+/* ---------- Nav ---------- */
+.site-nav{position:sticky; top:0; z-index:100; background:rgba(13,11,9,.92);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--linea)}
+.nav-interior{max-width:var(--ancho); margin:0 auto; padding:0 var(--margen);
+  display:flex; align-items:center; gap:24px; min-height:68px}
+.marca{text-decoration:none; line-height:1; display:flex; flex-direction:column; gap:2px}
+.marca-nombre{font-family:var(--fuente-display); font-size:22px; letter-spacing:.04em; text-transform:uppercase}
+.marca-ciudad{font-family:var(--fuente-mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--amber)}
+.menu{list-style:none; display:flex; gap:4px; margin:0 0 0 auto; padding:0}
+.menu a{display:block; padding:10px 12px; text-decoration:none; font-family:var(--fuente-mono);
+  font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--bone)}
+.menu a:hover{color:var(--amber)}
+.menu a.activo{background:var(--amber); color:var(--amber-ink)}
+.menu-boton{display:none; background:none; border:1px solid var(--linea-fuerte); width:44px; height:44px;
+  cursor:pointer; flex-direction:column; align-items:center; justify-content:center; gap:5px; margin-left:auto}
+.menu-boton span{display:block; width:22px; height:2px; background:var(--bone)}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:48px;
+  padding:14px 26px; font-family:var(--fuente-mono); font-size:12px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase; text-decoration:none; cursor:pointer;
+  border:1px solid transparent; transition:transform .2s var(--ease), background .2s, color .2s}
+.btn-ambar{background:var(--amber); color:var(--amber-ink)}
+.btn-ambar:hover{background:var(--bone); color:var(--amber-ink); transform:translateY(-2px)}
+.btn-linea{border-color:var(--linea-fuerte); color:var(--bone); background:transparent}
+.btn-linea:hover{border-color:var(--amber); color:var(--amber)}
+.btn-nav{padding:10px 18px; min-height:44px}
+.fila-cta{display:flex; flex-wrap:wrap; gap:14px; margin:1.2em 0}
+.enlace-flecha{font-family:var(--fuente-mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--amber); text-decoration:none; border-bottom:1px solid transparent}
+.enlace-flecha:hover{border-bottom-color:var(--amber)}
+
+/* ---------- Marquee ---------- */
+.marquesina{background:var(--amber); color:var(--amber-ink); overflow:hidden; white-space:nowrap;
+  font-family:var(--fuente-mono); font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase}
+.marquesina-pista{display:inline-flex; animation:marquesina 28s linear infinite}
+.marquesina-pista span{padding:10px 0}
+@keyframes marquesina{to{transform:translateX(-50%)}}
+
+/* ---------- Layout ---------- */
+main{display:block}
+.seccion{max-width:var(--ancho); margin:0 auto; padding:96px var(--margen)}
+.cabecera-pagina{padding-bottom:32px}
+.seccion-oscura{background:var(--surface); max-width:none}
+.seccion-oscura>.etiqueta,.seccion-oscura>h2,.seccion-oscura>p,.seccion-oscura>ol,.seccion-oscura>aside,.seccion-oscura>div{max-width:var(--ancho); margin-left:auto; margin-right:auto}
+.seccion-oscura .filas{padding-left:0; padding-right:0}
+.etiqueta{font-family:var(--fuente-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--amber); opacity:.85; margin:0 0 14px}
+.intro-seccion{max-width:640px; font-size:19px; color:var(--bone)}
+.nota{font-size:14px; color:var(--muted)}
+.nota-foto{font-family:var(--fuente-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); margin:10px 0 0}
+.chip{display:inline-block; background:var(--amber); color:var(--amber-ink); font-family:var(--fuente-mono);
+  font-size:10px; letter-spacing:.14em; padding:3px 8px; vertical-align:middle; text-transform:uppercase}
+.precio{color:var(--amber); font-family:var(--fuente-mono); font-size:13px; letter-spacing:.1em; text-transform:uppercase}
+.caja-nota{border:1px solid var(--linea-fuerte); border-left:4px solid var(--amber);
+  background:var(--surface); padding:24px 28px; margin:32px 0}
+.caja-grande{padding:36px}
+.caja-nota p:last-child{margin-bottom:0}
+
+/* ---------- Hero ---------- */
+.heroe{max-width:var(--ancho); margin:0 auto; padding:72px var(--margen) 96px;
+  display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:end}
+.heroe h1 .linea{display:block}
+.linea-contorno{color:transparent; -webkit-text-stroke:3px var(--amber); text-stroke:3px var(--amber)}
+.sub{font-size:clamp(18px,2vw,22px); max-width:520px}
+.heroe-datos{display:flex; gap:32px; margin:36px 0 0; border-top:1px solid var(--linea); padding-top:20px}
+.heroe-datos dt{font-family:var(--fuente-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted)}
+.heroe-datos dd{margin:4px 0 0; font-weight:600}
+.heroe-media{position:relative}
+.heroe-media img{width:100%; height:100%; min-height:420px; object-fit:cover;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 48px),calc(100% - 48px) 100%,0 100%)}
+.insignia{position:absolute; width:150px; height:150px; left:-52px; top:-52px;
+  animation:girar 18s linear infinite}
+.insignia svg{width:100%; height:100%}
+.insignia text{fill:var(--amber); font-family:var(--fuente-mono); font-size:15.5px; letter-spacing:3px; text-transform:uppercase}
+.insignia-centro{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size:34px; color:var(--amber); animation:girar 18s linear infinite reverse}
+@keyframes girar{to{transform:rotate(360deg)}}
+
+/* ---------- Filas numeradas ---------- */
+.filas{list-style:none; margin:0; padding:0}
+.filas li{display:grid; grid-template-columns:80px 1fr auto; gap:24px; align-items:start;
+  padding:32px 0; border-top:1px solid var(--linea)}
+.filas li:last-child{border-bottom:1px solid var(--linea)}
+.filas .num{font-family:var(--fuente-display); font-size:44px; color:var(--amber); line-height:1}
+.filas h3{margin-bottom:8px}
+.filas p{margin-bottom:0; color:var(--bone); opacity:.85}
+.fila-etiqueta{font-family:var(--fuente-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted)}
+.fila-meta{display:flex; flex-direction:column; gap:6px; align-items:flex-end; text-align:right;
+  font-family:var(--fuente-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.fila-meta .precio{font-size:14px}
+
+/* ---------- Bot teaser / teléfono ---------- */
+.teaser-bot{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center}
+.lista-check{list-style:none; margin:0 0 1em; padding:0}
+.lista-check li{padding:8px 0 8px 30px; position:relative; border-top:1px solid var(--linea)}
+.lista-check li::before{content:"✓"; position:absolute; left:4px; color:var(--amber); font-weight:700}
+.telefono-mini{background:var(--wa-fondo); border:1px solid var(--linea-fuerte); border-radius:18px;
+  padding:20px; max-width:380px; margin:0 auto; width:100%}
+.telefono-cabecera{display:flex; justify-content:space-between; font-family:var(--fuente-mono);
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase; border-bottom:1px solid var(--linea); padding-bottom:12px}
+.en-linea{color:var(--wa-verde)}
+.burbuja{border-radius:10px; padding:12px 14px; margin:12px 0; font-size:15px; line-height:1.5; max-width:88%}
+.burbuja-bot{background:#202C33; color:#E9EDEF; border-top-left-radius:2px}
+.burbuja-yo{background:var(--wa-yo); color:var(--amber-ink); margin-left:auto; border-top-right-radius:2px}
+.telefono-entrada{font-size:13px; color:var(--muted); border-top:1px solid var(--linea); padding-top:12px; margin:12px 0 0}
+
+/* ---------- Barberos ---------- */
+.tarjetas-barbero{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+.tarjeta-barbero{border:1px solid var(--linea); background:var(--surface)}
+.tarjeta-barbero h3,.tarjeta-barbero p{padding:0 20px}
+.tarjeta-barbero h3{padding-top:20px; font-size:22px}
+.tarjeta-barbero p{color:var(--muted); font-size:15px}
+.tarjeta-barbero p:last-child{padding-bottom:20px}
+.foto-marcador{position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--surface-2)}
+.foto-marcador img{width:100%; height:100%; object-fit:cover; filter:grayscale(35%) contrast(1.05)}
+.foto-marcador span{position:absolute; left:12px; bottom:12px; background:var(--coal); color:var(--amber);
+  font-family:var(--fuente-mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; padding:6px 10px}
+
+/* ---------- Visita / CTA final ---------- */
+.visita{display:grid; grid-template-columns:repeat(3,1fr); gap:40px; border-top:1px solid var(--linea)}
+.visita h2{font-size:clamp(32px,4vw,48px)}
+.cta-final{text-align:left; border-top:1px solid var(--linea)}
+.cta-final h2{font-size:clamp(56px,9vw,120px)}
+
+/* ---------- Servicios ---------- */
+.servicios-layout{display:grid; grid-template-columns:.85fr 1.15fr; gap:56px; align-items:start}
+.foto-servicios{margin:0; position:sticky; top:100px}
+.foto-servicios img{width:100%; aspect-ratio:4/5; object-fit:cover; filter:grayscale(20%) contrast(1.05)}
+.foto-servicios figcaption{font-family:var(--fuente-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding-top:12px}
+.servicios-pie{display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px; align-items:start}
+.servicios-pie img{aspect-ratio:16/10; object-fit:cover; width:100%}
+.servicios-pie figcaption{font-family:var(--fuente-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding-top:10px}
+
+/* ---------- Reservas / teléfono grande ---------- */
+.reservas-layout{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start}
+.estado-servicio{font-family:var(--fuente-mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase}
+.foto-sede{margin:24px 0 12px}
+.foto-sede img{width:100%; aspect-ratio:16/9; object-fit:cover}
+.foto-sede figcaption{font-family:var(--fuente-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding-top:10px}
+.telefono{background:var(--wa-fondo); border:1px solid var(--linea-fuerte); border-radius:22px;
+  overflow:hidden; max-width:420px; margin:0 auto; width:100%; position:sticky; top:96px}
+.telefono-barra{display:flex; justify-content:space-between; padding:12px 18px 0;
+  font-family:var(--fuente-mono); font-size:11px; color:var(--muted); margin:0}
+.telefono .telefono-cabecera{display:flex; gap:12px; align-items:center; padding:14px 18px;
+  background:#1F2C34; border-bottom:1px solid var(--linea); margin:12px 0 0}
+.telefono-avatar{width:40px; height:40px; border-radius:50%; background:var(--amber); color:var(--amber-ink);
+  display:flex; align-items:center; justify-content:center; font-family:var(--fuente-display); font-size:20px}
+.telefono-cabecera strong{font-size:16px}
+.telefono-cifrado{text-align:center; font-size:11px; color:var(--muted); background:#182229;
+  border-radius:8px; margin:12px 16px 0; padding:8px 12px}
+.chat{padding:16px; min-height:340px; display:flex; flex-direction:column; gap:4px}
+.chat .burbuja{margin:6px 0; animation:entra .35s var(--ease)}
+.chat .burbuja small{display:block; text-align:right; font-size:10px; opacity:.6; margin-top:4px}
+@keyframes entra{from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:none}}
+.chat-opciones{display:flex; flex-direction:column; gap:8px; padding:0 16px 8px}
+.chat-opciones .btn{width:100%; min-height:44px}
+.chat-opciones .btn-linea{border-color:var(--wa-verde); color:var(--wa-verde)}
+.chat-opciones .btn-linea:hover{background:var(--wa-verde); color:#06281B}
+.chat-opciones .enlace-opcion{text-align:center; font-family:var(--fuente-mono); font-size:12px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--wa-verde); padding:10px}
+.pasos{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:32px}
+.pasos li{border-top:1px solid var(--linea); padding-top:24px}
+.pasos .num{font-family:var(--fuente-display); font-size:44px; color:var(--amber); line-height:1}
+.pasos h3{margin:16px 0 8px}
+.pasos p{color:var(--bone); opacity:.85}
+
+/* ---------- Galería ---------- */
+.filtros{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px}
+.filtro{background:transparent; border:1px solid var(--linea-fuerte); color:var(--bone); cursor:pointer;
+  font-family:var(--fuente-mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  padding:12px 18px; min-height:44px; transition:background .2s, color .2s}
+.filtro:hover{border-color:var(--amber); color:var(--amber)}
+.filtro.activo{background:var(--amber); border-color:var(--amber); color:var(--amber-ink)}
+.galeria{display:flex; gap:10px; height:560px}
+.tile{position:relative; flex:1 1 0; overflow:hidden; cursor:pointer; min-width:0;
+  transition:flex .45s var(--ease); background:var(--surface-2)}
+.tile img{width:100%; height:100%; object-fit:cover; filter:grayscale(25%) contrast(1.05); transition:transform .45s var(--ease)}
+.tile:hover,.tile:focus-visible{flex:2.6 1 0}
+.tile:hover img,.tile:focus-visible img{transform:scale(1.04)}
+.tile-info{position:absolute; left:0; right:0; bottom:0; padding:20px 18px 16px;
+  background:linear-gradient(to top, rgba(13,11,9,.92), rgba(13,11,9,0)); opacity:0;
+  transform:translateY(8px); transition:opacity .3s var(--ease), transform .3s var(--ease)}
+.tile:hover .tile-info,.tile:focus-visible .tile-info,.tile.expandido .tile-info{opacity:1; transform:none}
+.tile-num{font-family:var(--fuente-mono); font-size:11px; letter-spacing:.2em; color:var(--amber)}
+.tile-servicio{font-family:var(--fuente-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin:4px 0}
+.tile-info h3{font-size:24px; margin-bottom:6px}
+.tile-info p{font-size:14px; margin-bottom:6px; color:var(--bone)}
+.tile-nota{font-family:var(--fuente-mono) !important; font-size:10px !important; letter-spacing:.1em; text-transform:uppercase; color:var(--amber) !important}
+.tile.oculto{display:none}
+
+/* ---------- Precios ---------- */
+.tabla-precios{width:100%; border-collapse:collapse; margin:8px 0 40px}
+.tabla-precios caption{text-align:left; font-family:var(--fuente-mono); font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--muted); padding-bottom:16px}
+.tabla-precios th{font-family:var(--fuente-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--muted); text-align:left; padding:14px 16px; border-bottom:1px solid var(--linea-fuerte)}
+.tabla-precios td{padding:28px 16px; border-bottom:1px solid var(--linea); vertical-align:top}
+.tabla-precios td strong{font-family:var(--fuente-display); font-size:26px; font-weight:400; text-transform:uppercase; letter-spacing:.01em}
+.tabla-detalle{display:block; margin-top:8px; font-size:15px; color:var(--bone); opacity:.8; max-width:420px}
+.foto-precios{margin:0 0 40px}
+.foto-precios img{width:100%; aspect-ratio:16/7; object-fit:cover}
+.foto-precios figcaption{font-family:var(--fuente-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding-top:10px}
+.premisas{border:1px solid var(--linea); padding:28px; margin-bottom:40px; background:var(--surface)}
+.premisas p:last-child{margin-bottom:0}
+.faq{margin:48px 0}
+.faq h2{font-size:clamp(28px,4vw,44px)}
+.mapa-bloque{border-top:1px solid var(--linea); padding-top:32px}
+
+/* ---------- Contacto ---------- */
+.contacto-layout{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start}
+.contacto-lista div{border-top:1px solid var(--linea); padding:20px 0}
+.contacto-lista dt{font-family:var(--fuente-mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted)}
+.contacto-lista dd{margin:6px 0 0}
+.mapa iframe{width:100%; height:340px; border:1px solid var(--linea-fuerte); filter:grayscale(1) invert(.92) contrast(.9)}
+.lista-datos{list-style:none; margin:16px 0 0; padding:0}
+.lista-datos li{padding:8px 0; border-top:1px solid var(--linea)}
+.contacto-media{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center}
+.contacto-media img{width:100%; aspect-ratio:16/10; object-fit:cover}
+.contacto-media figcaption{font-family:var(--fuente-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); padding-top:10px}
+#form-contacto{display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:860px}
+.campo-ancho{grid-column:1 / -1}
+.campo label{display:block; font-family:var(--fuente-mono); font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; margin-bottom:8px}
+.campo input,.campo select,.campo textarea{width:100%; background:var(--surface); border:1px solid var(--linea-fuerte);
+  color:var(--bone); font-family:var(--fuente-cuerpo); font-size:16px; padding:14px 16px; border-radius:0}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--amber); outline:none}
+.campo input[aria-invalid="true"],.campo textarea[aria-invalid="true"]{border-color:#FF5252}
+.error{color:#FF8A80; font-size:14px; margin:8px 0 0}
+.consentimiento{display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start}
+.consentimiento input{width:22px; height:22px; margin-top:2px; accent-color:var(--amber); flex:none}
+.consentimiento label{flex:1; margin-bottom:0; text-transform:none; letter-spacing:.02em; font-family:var(--fuente-cuerpo); font-size:15px}
+.consentimiento .error{flex-basis:100%}
+.form-exito{border:1px solid var(--amber); background:var(--surface); padding:32px; max-width:860px; margin-top:8px}
+.form-exito h3{color:var(--amber)}
+
+/* ---------- Legal ---------- */
+.legal h2{font-size:clamp(24px,3vw,34px); margin:40px 0 12px}
+.legal p{max-width:720px}
+
+/* ---------- Footer / flotante / cookies ---------- */
+.pie{border-top:1px solid var(--linea); background:var(--surface)}
+.pie-interior{max-width:var(--ancho); margin:0 auto; padding:64px var(--margen) 40px;
+  display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px}
+.pie-logo{font-family:var(--fuente-display); font-size:32px; text-transform:uppercase; margin-bottom:8px}
+.pie-lema{color:var(--muted); font-size:14px}
+.pie-titulo{font-family:var(--fuente-mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--amber)}
+.pie p{margin:0 0 8px; font-size:15px}
+.pie a{text-decoration:none}
+.pie a:hover{color:var(--amber)}
+.pie-base{max-width:var(--ancho); margin:0 auto; padding:20px var(--margen) 28px;
+  border-top:1px solid var(--linea); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+.pie-base p{font-size:13px; color:var(--muted); margin:0}
+.btn-flotante{position:fixed; right:20px; bottom:20px; z-index:90; display:flex; align-items:center; gap:10px;
+  background:var(--wa-verde); color:#06281B; text-decoration:none; font-family:var(--fuente-mono);
+  font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  padding:12px 16px; min-height:48px; box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.btn-flotante:hover{color:#06281B; transform:translateY(-2px)}
+.cookies{position:fixed; left:0; right:0; bottom:0; z-index:95; background:var(--surface-2);
+  border-top:1px solid var(--linea-fuerte); padding:16px var(--margen); display:flex; gap:20px;
+  align-items:center; justify-content:space-between}
+.cookies[hidden]{display:none}
+.cookies p{margin:0; font-size:14px; max-width:900px}
+
+/* ---------- Entradas ---------- */
+.reveal{animation:subir .8s var(--ease) both}
+.reveal:nth-child(2){animation-delay:.1s}
+.reveal:nth-child(3){animation-delay:.2s}
+.reveal:nth-child(4){animation-delay:.3s}
+@keyframes subir{from{opacity:0; transform:translateY(28px)} to{opacity:1; transform:none}}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1020px){
+  .heroe{grid-template-columns:1fr; gap:40px; padding-top:48px}
+  .heroe-media img{min-height:300px}
+  .insignia{left:auto; right:16px; top:-40px; width:120px; height:120px}
+  .teaser-bot,.reservas-layout,.contacto-layout,.contacto-media,.servicios-layout{grid-template-columns:1fr; gap:40px}
+  .foto-servicios{position:static}
+  .telefono{position:static}
+  .tarjetas-barbero{grid-template-columns:1fr 1fr}
+  .visita,.servicios-pie,.pasos{grid-template-columns:1fr 1fr}
+  .pie-interior{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  h1{font-size:clamp(56px,17vw,84px)}
+  .seccion{padding:64px var(--margen)}
+  .menu-boton{display:flex}
+  .menu{position:absolute; top:68px; left:0; right:0; background:var(--coal); flex-direction:column;
+    border-bottom:1px solid var(--linea-fuerte); padding:8px var(--margen) 16px; display:none}
+  .menu.abierto{display:flex}
+  .menu a{padding:14px 8px; font-size:13px}
+  .btn-nav{display:none}
+  .nav-interior{gap:12px}
+  .heroe-datos{flex-direction:column; gap:16px}
+  .filas li{grid-template-columns:48px 1fr; gap:16px}
+  .filas .num{font-size:32px}
+  .fila-etiqueta{grid-column:2}
+  .fila-meta{align-items:flex-start; text-align:left; grid-column:2}
+  .tarjetas-barbero{grid-template-columns:1fr}
+  .visita,.servicios-pie,.pasos{grid-template-columns:1fr}
+  .galeria{flex-direction:column; height:auto}
+  .tile{flex:none; height:220px}
+  .tile:hover,.tile:focus-visible{flex:none}
+  .tile-info{opacity:1; transform:none}
+  .tile img{height:220px}
+  .tabla-precios thead{display:none}
+  .tabla-precios,.tabla-precios tbody,.tabla-precios tr,.tabla-precios td{display:block; width:100%}
+  .tabla-precios tr{border:1px solid var(--linea); margin-bottom:16px; padding:8px 0}
+  .tabla-precios td{border-bottom:none; padding:10px 16px}
+  #form-contacto{grid-template-columns:1fr}
+  .pie-interior{grid-template-columns:1fr}
+  .btn-flotante span{display:none}
+  .btn-flotante{padding:12px; border-radius:50%}
+  .cookies{flex-direction:column; align-items:flex-start}
+  .insignia{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
